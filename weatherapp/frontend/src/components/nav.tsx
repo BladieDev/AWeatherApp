@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.css";
-
+import "../App.css";
 function Location() {
   const [coords, setCoords] = useState<{
     latitude: number;
@@ -48,7 +47,7 @@ function Location() {
   return (
     <>
       {locationName ? (
-        <h2>{locationName}</h2>
+        <h2> Jesteś w: {locationName}</h2>
       ) : error ? (
         <p style={{ color: "red" }}>Błąd: {error}</p>
       ) : (
@@ -65,15 +64,19 @@ function getDate() {
 
 function Nav() {
   return (
-    <div className="list-group">
-      <h1>Pogoda</h1>
-      <ul>
-        <li className="list-group-item">Dzisiaj jest: {getDate()}</li>
-        <li className="list-group-item">
-          Jesteś w: <Location />
-        </li>
-      </ul>
-    </div>
+    <>
+      <div className=" text-center content-center">
+        <h1 className="text-4xl ">Your Weather</h1>
+        <div className="items-center">
+          <ul className="menu menu-vertical lg:menu-horizontal bg-base-200 rounded-box radius-box">
+            <li className="items-center">Dzisiaj jest: {getDate()}</li>
+            <li className="items-center">
+              <Location />
+            </li>
+          </ul>
+        </div>
+      </div>
+    </>
   );
 }
 
