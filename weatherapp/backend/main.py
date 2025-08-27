@@ -31,3 +31,31 @@ def location(coords: Coords):
     response = requests.get(url)
     data = response.json()
     return data
+
+
+class Weather(BaseModel):
+    temperature = float
+    feelsTemperature = float
+    pressure = float
+    humidity = float
+    windSpeed = float
+    clouds = int
+    sunrise = int
+    sunset = int
+    description = str
+
+
+@app.post("/sendWeather")
+def weather(weather: Weather):
+    url = "https://open-weather13.p.rapidapi.com/city"
+
+    querystring = {"city": "Szczecin", "lang": "pl"}
+
+    headers = {
+        "x-rapidapi-key": "Api_Key",
+        "x-rapidapi-host": "open-weather13.p.rapidapi.com"
+    }
+
+    response = requests.get(url, headers=headers, params=querystring)
+    data = response.json()
+    return data
