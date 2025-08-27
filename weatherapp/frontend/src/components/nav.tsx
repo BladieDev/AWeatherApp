@@ -21,7 +21,7 @@ function Location() {
   // Wyślij współrzędne do backendu Django i odbierz nazwę lokalizacji
   useEffect(() => {
     if (coords) {
-      fetch("http://127.0.0.1:8000/sendLocation/", {
+      fetch("http://127.0.0.1:8000/sendLocation", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -65,13 +65,19 @@ function getDate() {
 function Nav() {
   return (
     <>
-      <div className=" text-center content-center">
-        <h1 className="text-4xl ">Your Weather</h1>
-        <div className="items-center">
-          <ul className="menu menu-vertical lg:menu-horizontal bg-base-200 rounded-box radius-box">
-            <li className="items-center">Dzisiaj jest: {getDate()}</li>
-            <li className="items-center">
-              <Location />
+      <div className="flex flex-col justify-center items-center bg text-center">
+        <h1 className="text-5xl text-accent p-5">Your Weather</h1>
+        <div className="flex flex-row justify-center items-center gap-8 w-full">
+          <ul className="menu menu-horizontal bg-base-200 rounded-box w-1/4 p-4 justify-center">
+            <li>
+              <h2 className="text-xl">Dzisiaj jest: {getDate()}</h2>
+            </li>
+          </ul>
+          <ul className="menu menu-horizontal bg-base-200 rounded-box w-1/4 p-4 justify-center">
+            <li>
+              <h1 className="text-xl">
+                <Location />
+              </h1>
             </li>
           </ul>
         </div>
