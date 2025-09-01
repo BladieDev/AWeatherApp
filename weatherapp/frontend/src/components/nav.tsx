@@ -19,6 +19,7 @@ function Location() {
   }, []);
 
   // Wyślij współrzędne do backendu Django i odbierz nazwę lokalizacji
+
   useEffect(() => {
     if (coords) {
       fetch("http://127.0.0.1:8000/sendLocation", {
@@ -36,6 +37,7 @@ function Location() {
           return response.json();
         })
         .then((data) => {
+          console.log("Location response:", data);
           setLocationName(
             data.address?.city || data.address?.town || data.display_name
           );
@@ -75,9 +77,9 @@ function Nav() {
           </ul>
           <ul className="menu menu-horizontal bg-base-200 rounded-box w-1/4 p-4 justify-center">
             <li>
-              <h1 className="text-xl">
+              <h2 className="text-xl">
                 <Location />
-              </h1>
+              </h2>
             </li>
           </ul>
         </div>

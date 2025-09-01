@@ -1,4 +1,5 @@
 import Nav from "./components/nav";
+import Weather from "./components/weather";
 import "./App.css";
 
 function App() {
@@ -6,6 +7,9 @@ function App() {
     <>
       <div data-theme="lofi">
         <Nav />
+      </div>
+      <div>
+        <Weather />
       </div>
     </>
   );
