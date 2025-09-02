@@ -47,15 +47,18 @@ function Location() {
   }, [coords]);
 
   return (
-    <>
+    <div className="flex flex-col justify-center items-center bg-base-100 text-center rounded-box shadow-xl p-8 w-full max-w-xl mx-auto mt-8">
+      <h2 className="text-2xl text-primary font-bold mb-2">
+        Twoja lokalizacja
+      </h2>
       {locationName ? (
-        <h2> Jesteś w: {locationName}</h2>
+        <div className="text-xl text-accent mb-2">Jesteś w: {locationName}</div>
       ) : error ? (
-        <p style={{ color: "red" }}>Błąd: {error}</p>
+        <div className="text-lg text-error">Błąd: {error}</div>
       ) : (
-        <p>Nie udało się pobrać lokalizacji.</p>
+        <div className="text-lg">Nie udało się pobrać lokalizacji.</div>
       )}
-    </>
+    </div>
   );
 }
 
@@ -68,20 +71,15 @@ function Nav() {
   return (
     <>
       <div className="flex flex-col justify-center items-center bg text-center">
-        <h1 className="text-5xl text-accent p-5">Your Weather</h1>
-        <div className="flex flex-row justify-center items-center gap-8 w-full">
-          <ul className="menu menu-horizontal bg-base-200 rounded-box w-1/4 p-4 justify-center">
-            <li>
-              <h2 className="text-xl">Dzisiaj jest: {getDate()}</h2>
-            </li>
-          </ul>
-          <ul className="menu menu-horizontal bg-base-200 rounded-box w-1/4 p-4 justify-center">
-            <li>
-              <h2 className="text-xl">
-                <Location />
-              </h2>
-            </li>
-          </ul>
+        <h1 className="text-5xl text-accent p-8">Your Weather</h1>
+        <div className="flex flex-row justify-center items-center gap-4 w-full">
+          <div className="flex flex-col justify-center items-center bg-base-100 text-center rounded-box shadow-xl p-8 w-full max-w-xl mx-auto mt-8">
+            <h2 className="text-2xl text-primary font-bold mb-2">Data</h2>
+            <div className="text-xl text-accent mb-2">
+              Dzisiaj jest: {getDate()}
+            </div>
+          </div>
+          <Location />
         </div>
       </div>
     </>

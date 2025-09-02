@@ -37,26 +37,35 @@ function Weather() {
   }, [coords]);
 
   return (
-    <>
-      <div>
-        <div>
-          <h1>Temperatura: {Math.round(weather?.main?.temp) - 275}°C</h1>
-          <h3>
-            Temperatura odczuwalna:{" "}
-            {Math.round(weather?.main?.feels_like) - 275}°C
-          </h3>
-        </div>
-        <div>
-          <ul>
-            <li>Ciśnienie: {weather?.main?.pressure}hPa</li>
-            <li>Wilgotność: {weather?.main?.humidity}%</li>
-            <li>Wiatr: {weather?.wind?.speed}m/s</li>
-            <li>Zachmurzenie %: {weather?.clouds?.all} %</li>
-            <li>Zachmurzenie: {weather?.weather?.[0]?.description}</li>
-          </ul>
-        </div>
-      </div>
-    </>
+    <div className="flex flex-col justify-center items-center bg-base-100 text-center rounded-box shadow-xl p-8 w-full max-w-xl mx-auto mt-8">
+      <h1 className="text-4xl text-primary font-bold mb-2">Aktualna pogoda</h1>
+      <h2 className="text-2xl text-accent mb-4">
+        Temperatura:{" "}
+        {weather?.main?.temp ? Math.round(weather.main.temp - 275.15) : "-"}°C
+      </h2>
+      <h3 className="text-xl mb-6">
+        Temperatura odczuwalna:{" "}
+        {weather?.main?.feels_like
+          ? Math.round(weather.main.feels_like - 275.15)
+          : "-"}
+        °C
+      </h3>
+      <ul className="menu menu-vertical bg-base-200 rounded-box w-full p-4 gap-2">
+        <li className="text-lg">
+          Ciśnienie: {weather?.main?.pressure ?? "-"} hPa
+        </li>
+        <li className="text-lg">
+          Wilgotność: {weather?.main?.humidity ?? "-"}%
+        </li>
+        <li className="text-lg">Wiatr: {weather?.wind?.speed ?? "-"} m/s</li>
+        <li className="text-lg">
+          Zachmurzenie %: {weather?.clouds?.all ?? "-"}
+        </li>
+        <li className="text-lg">
+          Opis: {weather?.weather?.[0]?.description ?? "-"}
+        </li>
+      </ul>
+    </div>
   );
 }
 
